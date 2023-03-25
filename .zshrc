@@ -119,6 +119,12 @@ source $ZSH/oh-my-zsh.sh
 ## PATH 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
+### google-cloud-sdk
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+alias gcl=gcloud
+alias gcci='gcloud compute instances'
+
 ### fzf
 export FZF_CONF=~/.myconf/.fzfrc
 alias .fzf="vim $FZF_CONF"
@@ -139,6 +145,8 @@ alias .v="vim ~/.config/nvim/init.vim ~/.dein/dein.toml -O"
 # 省略形
 alias ppd=popd
 alias his=history
+# ssh
+alias sshconfup="cat ~/.ssh/conf.d/*.conf > ~/.ssh/config" 
 
 ## key-bind
 bindkey "^s" beginning-of-line
@@ -152,3 +160,4 @@ cdpath=(.. ~)
 setopt hist_ignore_dups
 setopt share_history
 setopt inc_append_history
+
