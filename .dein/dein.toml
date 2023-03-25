@@ -13,17 +13,17 @@ hook_add = '''
 [[plugins]]
 repo = 'ntk148v/vim-horizon'
 hook_add = '''
-" if you don't set this option, this color might not correct
-set termguicolors
+    " if you don't set this option, this color might not correct
+    set termguicolors
 
-colorscheme horizon
+    colorscheme horizon
 
-" lightline
-let g:lightline = {}
-let g:lightline.colorscheme = 'horizon'
+    " lightline
+    let g:lightline = {}
+    let g:lightline.colorscheme = 'horizon'
 
-" or this line
-let g:lightline = {'colorscheme' : 'horizon'}
+    " or this line
+    let g:lightline = {'colorscheme' : 'horizon'}
 '''
 
 [[plugins]]
@@ -41,3 +41,69 @@ rev = 'release'
 merged = '0'
 hook_add = '''exec 'source ~/.dein/settings/coc-vim.vim' '''
 
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+    set signcolumn=yes
+    let g:gitgutter_async = 1
+    let g:gitgutter_sign_modified = 'rw'
+    highlight GitGutterAdd ctermfg=green
+    highlight GitGutterChange ctermfg=yellow
+    highlight GitGutterDelete ctermfg=red
+    highlight GitGutterChangeDelete ctermfg=yellow
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+depends = 'vim-airline'
+hook_add = '''
+    let g:airline_theme = 'onedark'
+    let g:airline#extensions#tabline#enabled = 1
+    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
+
+    " , キーで次タブのバッファを表示
+    nnoremap <silent> , :bprev<CR>
+    " . キーで前タブのバッファを表示
+    nnoremap <silent> . :bnext<CR>
+    " bdで現在のバッファを削除
+    nnoremap bd :bd<CR>
+'''
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+hook_add = '''
+    vnoremap # :'<,'>TComment<CR>
+'''
+
+[[plugins]]
+repo = 'luochen1990/rainbow'
+hook_add = '''
+    let g:rainbow_active = 1
+'''
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'xhtml', 'javascript', 'typescript', 'javascript.jsx', 'typescript.tsx']
+hook_add = '''
+  let g:closetag_filenames='*.html'
+  let g:closetag_xhtml_filenames='*.jsx,*.tsx,*.vue'
+  let g:closetag_filetypes='html'
+  let g:closetag_xhtml_filetypes='jsx,tsx,javascript.jsx,typescript.tsx,vue'
+  let g:closetag_emptyTags_caseSensitive=1
+  let g:closetag_shortcut='>'
+'''
+
+[[plugins]]
+repo = 'simeji/winresizer'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'vim-scripts/ReplaceWithRegister'
+
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'

@@ -135,7 +135,7 @@ alias vim=nvim
 alias view="nvim -R"
 alias .z="vim ~/.zshrc"
 alias sz="source ~/.zshrc"
-alias .v="vim ~/.config/nvim/init.vim"
+alias .v="vim ~/.config/nvim/init.vim ~/.dein/dein.toml -O"
 # 省略形
 alias ppd=popd
 alias his=history

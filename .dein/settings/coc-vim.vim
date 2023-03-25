@@ -50,4 +50,5 @@ let g:coc_global_extensions = [
     \ 'coc-cssmodules',
     \ 'coc-spell-checker',
     \ 'coc-snippets',
+    \ 'coc-emoji',
 \ ]

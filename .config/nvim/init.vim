@@ -45,19 +45,28 @@ endif
 """ キーマップ
 inoremap <silent> jj <ESC>
 
-""" gitgutter 用
-let g:gitgutter_highlight_lines = 1
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
-
 """ その他の設定
 syntax on
+
+" line numbers
 set number
-set tabstop=4
-set shiftwidth=4
-set expandtab
 set nowrap
+
+" tabs & indent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set autoindent
+
+" search
+set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
+set ignorecase " 検索パターンに大文字小文字を区別しない
+set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
+set hlsearch " 検索結果をハイライト
+set iskeyword+=-
+
 set noswapfile
+set belloff=all
 
 """ vim スクリプト
 " TODO: 外部ファイル化
