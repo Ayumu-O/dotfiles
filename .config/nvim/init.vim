@@ -1,58 +1,54 @@
+" plugin manager (dein) ---------------------------------------------------------
+" Ward off unexpected things that your distro might have made, as
+" well as sanely reset options when re-sourcing .vimrc
+set nocompatible
+
+" Set Dein base path (required)
+let s:dein_base = expand('~/.config/nvim/dein')
+
+" Set Dein source path (required)
+let s:dein_src = s:dein_base . '/repos/github.com/Shougo/dein.vim'
+
+" Set Dein runtime path (required)
+execute 'set runtimepath+=' . s:dein_src
+
+" tomlセット
+let s:toml_dir=expand('~/.dein/')
+let s:toml=s:toml_dir . 'dein.toml'
+let s:toml_lazy=s:toml_dir . 'dein-lazy.toml'
+
+" Call Dein initialization (required)
+" プラグインのロード
+if dein#load_state(s:dein_base)
+  call dein#begin(s:dein_base)
+
+  call dein#load_toml(s:toml)
+  call dein#load_toml(s:toml_lazy, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Attempt to determine the type of a file based on its name and possibly its
+" contents. Use this to allow intelligent auto-indenting for each filetype,
+" and for plugins that are filetype specific.
+if has('filetype')
+  filetype indent plugin on
+endif
+
+" Uncomment if you want to install not-installed plugins on startup.
+if dein#check_install()
+ call dein#install()
+endif
+"-----------------------------------------------------------------------
+
 """ キーマップ
 inoremap <silent> jj <ESC>
-
-""" vim-plug 用
-call plug#begin()
-    Plug 'ntk148v/vim-horizon'
-    Plug 'preservim/nerdtree'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
-
-""" vim-horizon 用
-" if you don't set this option, this color might not correct
-set termguicolors
-
-colorscheme horizon
-
-" lightline
-let g:lightline = {}
-let g:lightline.colorscheme = 'horizon'
-
-" or this line
-let g:lightline = {'colorscheme' : 'horizon'}
-
-""" NERDTree 用
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-" Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 """ gitgutter 用
 let g:gitgutter_highlight_lines = 1
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
-
-""" coc.nvim 用
-" Use tab for trigger completion with characters ahead and navigate
-" NOTE: There's always complete item selected by default, you may want to enable
-" no select by `"suggest.noselect": true` in your configuration file
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 """ その他の設定
 syntax on
@@ -67,3 +63,4 @@ set noswapfile
 " TODO: 外部ファイル化
 command! OpenVimrc vs ~/.config/nvim/init.vim
 command! ReadVimrc source ~/.config/nvim/init.vim
+
