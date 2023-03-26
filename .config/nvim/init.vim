@@ -57,6 +57,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set autoindent
+filetype plugin indent on
 
 " search
 set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
