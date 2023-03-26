@@ -130,6 +130,9 @@ export FZF_CONF=~/.myconf/.fzfrc
 alias .fzf="vim $FZF_CONF"
 source $FZF_CONF
 
+### docker
+source ~/.github/docker-fzf-completion/docker-fzf.zsh
+
 ## Enable home and end buttons
 bindkey "\033[1~" beginning-of-line
 bindkey "\033[4~" end-of-line

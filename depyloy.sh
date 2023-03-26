@@ -4,6 +4,7 @@ dotfiles=(
     .tmux.conf 
     .config/nvim/init.vim
     .dein
+    .myconf
 )
 
 for file in "${dotfiles[@]}"; do
