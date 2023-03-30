@@ -66,8 +66,12 @@ set smartcase " 検索パターンに大文字を含んでいたら大文字小�
 set hlsearch " 検索結果をハイライト
 set iskeyword+=-
 
+" swapfile 作らない
 set noswapfile
+" beep 音なし
 set belloff=all
+" clipboard にもヤンク
+set clipboard=unnamed
 
 """ vim スクリプト
 " TODO: 外部ファイル化

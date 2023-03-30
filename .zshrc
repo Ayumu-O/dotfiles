@@ -145,6 +145,7 @@ alias view="nvim -R"
 alias .z="vim ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias .v="vim ~/.config/nvim/init.vim ~/.dein/dein.toml -O"
+alias line="open /Applications/LINE.app"
 # 省略形
 alias ppd=popd
 alias his=history
@@ -152,6 +153,9 @@ alias his=history
 alias sshconfup="cat ~/.ssh/conf.d/*.conf > ~/.ssh/config" 
 
 ## key-bind
+#　vim のキーバインディングを使う
+# bindkey -v
+# C-a は tmux で使っているため
 bindkey "^s" beginning-of-line
 
 ## option
