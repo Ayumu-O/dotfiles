@@ -144,7 +144,7 @@ alias view="nvim -R"
 alias .z="vim ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias .v="vim ~/.config/nvim/init.vim ~/.dein/dein.toml -O"
-alias .tmux="vim ~/.tmux"
+alias .tmux="vim ~/.tmux/.conf"
 alias .fzf="vim $FZF_CONF"
 alias line="open /Applications/LINE.app"
 # 省略形
