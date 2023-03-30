@@ -127,7 +127,6 @@ alias gcci='gcloud compute instances'
 
 ### fzf
 export FZF_CONF=~/.myconf/.fzfrc
-alias .fzf="vim $FZF_CONF"
 source $FZF_CONF
 
 ### docker
@@ -145,6 +144,8 @@ alias view="nvim -R"
 alias .z="vim ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias .v="vim ~/.config/nvim/init.vim ~/.dein/dein.toml -O"
+alias .tmux="vim ~/.tmux"
+alias .fzf="vim $FZF_CONF"
 alias line="open /Applications/LINE.app"
 # 省略形
 alias ppd=popd
