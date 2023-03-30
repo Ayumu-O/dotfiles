@@ -65,3 +65,18 @@ fdimgrm() {
   cid=$(docker image ls -a | sed 1d | fzf -m -q "$1" | awk '{print $1}')
   [ -n "$cid" ] && echo $cid | xargs docker image rm -f
 }
+##
+## git
+# git add
+# unbuffer を使うのに brew intall expect が必要
+unalias ga
+function ga() {
+    local selected
+    selected=$(unbuffer git status -s | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
+    if [[ -n "$selected" ]]; then
+        selected=$(tr '\n' ' ' <<< "$selected")
+        selected=$(echo "$selected" | sed 's/[[:space:]]*$//')
+        git add $selected
+        echo "Completed: git add $selected"
+    fi
+}
