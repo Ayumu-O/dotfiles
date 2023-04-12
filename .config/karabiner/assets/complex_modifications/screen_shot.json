@@ -1,0 +1,22 @@
+{
+  "title": "Maps PrintScreen to Screenshot",
+  "rules": [
+    {
+      "description": "Printscreen key to Screenshot",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "print_screen"
+          },
+          "to": [
+            {
+              "key_code": "4",
+              "modifiers": ["left_command", "left_shift"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    }
+  ]
+}
