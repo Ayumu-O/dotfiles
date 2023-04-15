@@ -119,6 +119,10 @@ source $ZSH/oh-my-zsh.sh
 ## PATH 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
+### aws
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
+
 ### google-cloud-sdk
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
@@ -147,6 +151,7 @@ alias .v="vim ~/.config/nvim/init.vim ~/.dein/dein.toml -O"
 alias .tmux="vim ~/.tmux.conf"
 alias .fzf="vim $FZF_CONF"
 alias line="open /Applications/LINE.app"
+alias date="/usr/local/bin/gdate"
 # 省略形
 alias ppd=popd
 alias his=history
