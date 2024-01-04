@@ -118,10 +118,26 @@ source $ZSH/oh-my-zsh.sh
 ### My settings ###
 ## PATH 
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$PATH:~/.bin
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH=$PATH:/Users/ayumu-osawa/Library/Android/sdk/platform-tools
+source "$HOME/.rye/env"
 
 ### aws
 autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
+START=`gdate '+%Y-%m'`-01
+END=`gdate '+%Y-%m' -d '1 month'`-01
+function awscost () {
+  aws ce get-cost-and-usage \
+    --time-period Start=${START},End=${END} \
+    --granularity MONTHLY \
+    --metrics BlendedCost \
+    --profile terraform \
+  | jq '.ResultsByTime[0].Total.BlendedCost.Amount' \
+  | tr -d '"'
+}
+alias amp=amplify
 
 ### google-cloud-sdk
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
@@ -151,12 +167,35 @@ alias .v="vim ~/.config/nvim/init.vim ~/.dein/dein.toml -O"
 alias .tmux="vim ~/.tmux.conf"
 alias .fzf="vim $FZF_CONF"
 alias line="open /Applications/LINE.app"
-alias date="/usr/local/bin/gdate"
+
+alias tf="terraform"
+alias tfp="tf fmt && tf plan"
+alias tfa="tf apply -auto-approve"
 # 省略形
 alias ppd=popd
 alias his=history
 # ssh
 alias sshconfup="cat ~/.ssh/conf.d/*.conf > ~/.ssh/config" 
+# python
+alias use_pyenv="export PATH=~/.pyenv/versions/3.9.0/bin:$PATH"
+
+### function
+unalias md
+function md () {
+  mkdir -p $1 && cd $1 && pwd
+}
+
+function pshell {
+  source $(echo "$(which python | sed 's|/python$|/activate|')")
+  deactivate
+  poetry shell
+  source .venv/bin/activate
+  which python
+}
+
+function pinit {
+  poetry init --author="Your Name <you@example.com>" --no-interaction
+}
 
 ## key-bind
 #　vim のキーバインディングを使う
@@ -174,3 +213,4 @@ setopt hist_ignore_dups
 setopt share_history
 setopt inc_append_history
 
+eval "$(direnv hook zsh)"

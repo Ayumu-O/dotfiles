@@ -44,13 +44,22 @@ endif
 
 """ キーマップ
 inoremap <silent> jj <ESC>
+inoremap <silent> kk <BS>
+inoremap <silent> <C-l> <ESC>$a
+inoremap <silent> <C-h> <ESC>0i
+set whichwrap=h,l,<,>,[,]
+nnoremap <CR> o<ESC>
+nnoremap <silent> J 10j
+nnoremap <silent> K 10k
 
 """ その他の設定
 syntax on
+autocmd InsertLeave * :silent !/usr/local/bin/im-select com.apple.inputmethod.Kotoeri.RomajiTyping.Roman
 
 " line numbers
 set number
 set nowrap
+set relativenumber
 
 " tabs & indent
 set tabstop=2
@@ -58,6 +67,12 @@ set shiftwidth=2
 set expandtab
 set autoindent
 filetype plugin indent on
+
+" terminal
+:tnoremap <Esc> <C-\><C-n>
+:tnoremap <silent> jj <C-\><C-n>
+command! -nargs=* T split | wincmd j | resize 20 | terminal <args>
+autocmd TermOpen * startinsert
 
 " search
 set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
